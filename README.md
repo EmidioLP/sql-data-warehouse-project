@@ -5,7 +5,7 @@ Esse projeto é baseado no curso ministrado pelo canal [Data with Baara](https:/
 
 ## 🏗️ Arquitetura dos Dados
 
-A arquitetura de dados desse projeto segue a Medallion Architecture com as camadas **Bronze**, **Silver**, e **Gold**:
+A arquitetura de dados desse projeto segue a Medallion Architecture com as camadas **Bronze**, **Silver**, e **Gold**: ![Arquitetura dos Dados](docs/data_architecture.png)
 
 1. **Camada Bronze**: Armazena os dados como estão dos sistemas fonte. Os dados são ingeridos de arquivos CSV para o SQL Server.
 2. **Camada Silver**: Essa camada inclui processos de data cleasing, standardization e normalização dos dados para análise.
