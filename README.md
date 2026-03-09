@@ -33,7 +33,7 @@ Esse projeto envolve:
 
 ## 🚀 Requisitos do Projeto
 
-### Desenvolvendo a Data Warehouse (Egenharia de Dados)
+### Desenvolvendo a Data Warehouse (Engenharia de Dados)
 
 #### Objetivo
 Desenvolver um data warehouse moderno usando o SQL Server para consolidar dados de vendas, permitindo a geração de relatórios analíticos e a tomada de decisões informadas.
