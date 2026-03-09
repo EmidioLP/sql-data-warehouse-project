@@ -5,6 +5,10 @@ Criando a Base de Dados e os Esquemas
 Propósito do script:
     Esse script cria uma nova base de dados chamada 'DataWarehouse' após checar se ela já existe.
     Se já existe, ele a exclui e depois recria. Adicionalmente, ele cria os esquemas 'bronze', 'silver' e 'gold'.
+
+WARNING:
+    Rodar esse script vai deletar toda a base de dados 'DataWarehouse' se ela já existir.
+    Todos os dados contidos nela serão deletados permanentemente.
 */
 
 USE master;
