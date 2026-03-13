@@ -9,7 +9,7 @@ A arquitetura de dados desse projeto segue a Medallion Architecture com as camad
 
 1. **Camada Bronze**: Armazena os dados como estão dos sistemas fonte. Os dados são ingeridos de arquivos CSV para o SQL Server.
 2. **Camada Silver**: Essa camada inclui processos de limpesa de dados, padronização e normalização dos dados para análise.
-3. **Camada Goldr**: Armazena dados preparados para o mercado no modelo star schema.
+3. **Camada Gold**: Armazena dados preparados para o mercado no modelo star schema.
 
 ---
 ## 📖 Overview do Projeto
