@@ -16,7 +16,7 @@ A arquitetura de dados desse projeto segue a Medallion Architecture com as camad
 
 Esse projeto envolve:
 
-1. **Arquitetura de Dados**: O desgine de uma arquitetura moderna utilizando as camadas **Bronze**, **Silver**, e **Gold**. 
+1. **Arquitetura de Dados**: O desgin de uma arquitetura moderna utilizando as camadas **Bronze**, **Silver**, e **Gold**. 
 2. **Pipelines ETL**: Extrair, transformar e carregar dados de sistemas fonte para o warehouse.
 3. **Modelagem de Dados**: Desenvolver tabelas de dimensões e fatos otimizadas para queries de análise.
 4. **Análise e Relatórios**: Criar reports baseados em SQL e dashboards para insights.
