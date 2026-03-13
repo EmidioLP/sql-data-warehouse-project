@@ -8,7 +8,7 @@ Esse projeto é baseado no curso ministrado pelo canal [Data with Baara](https:/
 A arquitetura de dados desse projeto segue a Medallion Architecture com as camadas **Bronze**, **Silver**, e **Gold**: ![Arquitetura dos Dados](docs/data_architecture.png)
 
 1. **Camada Bronze**: Armazena os dados como estão dos sistemas fonte. Os dados são ingeridos de arquivos CSV para o SQL Server.
-2. **Camada Silver**: Essa camada inclui processos de data cleasing, standardization e normalização dos dados para análise.
+2. **Camada Silver**: Essa camada inclui processos de limpesa de dados, padronização e normalização dos dados para análise.
 3. **Camada Goldr**: Armazena dados preparados para o mercado no modelo star schema.
 
 ---
@@ -18,13 +18,13 @@ Esse projeto envolve:
 
 1. **Arquitetura de Dados**: O desgine de uma arquitetura moderna utilizando as camadas **Bronze**, **Silver**, e **Gold**. 
 2. **Pipelines ETL**: Extrair, transformar e carregar dados de sistemas fonte para o warehouse.
-3. **Modelagem de Dados**: Desenvor tabelas de dimensões e fatos otimizadas para queries de análise.
+3. **Modelagem de Dados**: Desenvolver tabelas de dimensões e fatos otimizadas para queries de análise.
 4. **Análise e Relatórios**: Criar reports baseados em SQL e dashboards para insights.
 
 ## 🛠️ Links importantes e ferramentas:
 
 - **[Datasets](datasets/):** Acesso para o conjunto de dados do projeto (csv).
-- **[SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads):** Server peso leve par hospedar bancos ded dados SQL.
+- **[SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads):** Server peso leve para hospedar bancos de dados SQL.
 - **[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16):** GUI para monitorar e interagir com bases de dados.
 - **[DrawIO](https://www.drawio.com/):** Para criar arquiteturas de dados, modelos, flows e diagramas.
 - **[Notion](https://www.notion.com/):** Aplicativo tudo-em-um para organização de projetos.
