@@ -6,7 +6,7 @@ Objetivo do Script:
 	Esse procedimento carrega os dados na camada de 'bronze' de arquivos CSV externos.
 	Ele performar as seguintes ações:
 		- Exclui as tabelas na camada de bronze antes de carregar os dados (truncate).
-		- Use o comando 'BULK INSERT' para carregar arquivos do tipo CSV para as tabelas na camada de 'bronze'.
+		- Usa o comando 'BULK INSERT' para carregar arquivos do tipo CSV para as tabelas na camada de 'bronze'.
 	
 	Parâmetros:
 		Nenhum.
@@ -36,6 +36,7 @@ BEGIN
 		PRINT'>> Excluindo (truncating) a tabela: bronze.crm_cust_info';
 		TRUNCATE TABLE bronze.crm_cust_info;
 
+		-- Carregando bronze.crm_cust_info
 		SET @start_time = GETDATE();
 		PRINT'>> Inserindo os dados na tabela: bronze.crm_cust_info';
 		BULK INSERT bronze.crm_cust_info
@@ -49,6 +50,7 @@ BEGIN
 		PRINT '>> Duração do carregamento: ' + CAST(DATEDIFF(second, @start_time, @end_time)AS NVARCHAR) + ' segundos';
 		PRINT '------------------------';
 
+		-- Carregando bronze.crm_prd_info
 		PRINT'>> Excluindo (truncating) a tabela: bronze.crm_prd_info';
 		TRUNCATE TABLE bronze.crm_prd_info;
 
@@ -65,6 +67,7 @@ BEGIN
 		PRINT '>> Duração do carregamento: ' + CAST(DATEDIFF(second, @start_time, @end_time)AS NVARCHAR) + ' segundos';
 		PRINT '------------------------';
 
+		-- Carregando bronze.crm_sales_details
 		PRINT'>> Excluindo (truncating) a tabela: bronze.crm_sales_details';
 		TRUNCATE TABLE bronze.crm_sales_details;
 
@@ -85,6 +88,7 @@ BEGIN
 		PRINT 'Carregando as tabelas ERP';
 		PRINT '---------------------------------------------------';
 
+		-- Carregando bronze.erp_cust_az12
 		PRINT'>> Excluindo (truncating) a tabela: bronze.erp_cust_az12';
 		TRUNCATE TABLE bronze.erp_cust_az12;
 
@@ -101,6 +105,7 @@ BEGIN
 		PRINT '>> Duração do carregamento: ' + CAST(DATEDIFF(second, @start_time, @end_time)AS NVARCHAR) + ' segundos';
 		PRINT '------------------------';
 
+		-- Carregando bronze.erp_loc_a101
 		PRINT'>> Excluindo (truncating) a tabela: bronze.erp_loc_a101';
 		TRUNCATE TABLE bronze.erp_loc_a101;
 
@@ -117,6 +122,7 @@ BEGIN
 		PRINT '>> Duração do carregamento: ' + CAST(DATEDIFF(second, @start_time, @end_time)AS NVARCHAR) + ' segundos';
 		PRINT '------------------------';
 
+		-- Carregando bronze.erp_px_cat_g1v2
 		PRINT'>> Excluindo (truncating) a tabela: bronze.erp_px_cat_g1v2';
 		TRUNCATE TABLE bronze.erp_px_cat_g1v2;
 
