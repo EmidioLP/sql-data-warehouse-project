@@ -24,6 +24,8 @@ Esse projeto envolve:
 ## 🛠️ Links importantes e ferramentas:
 
 - **[Datasets](datasets/):** Acesso para o conjunto de dados do projeto (csv).
+- **[Convenções de nomenclatura](docs/naming_conventions.md):** Documento que descreve as convenções de nomenclatura usadas para esquemas, tabelas, visualizações, colunas e outros objetos no data warehouse.
+- **[Catálogo de Dados](docs/data_catalog.md):** Documento que descreve a estrutura da camada Gold.
 - **[SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads):** Server peso leve para hospedar bancos de dados SQL.
 - **[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16):** GUI para monitorar e interagir com bases de dados.
 - **[DrawIO](https://www.drawio.com/):** Para criar arquiteturas de dados, modelos, flows e diagramas.
