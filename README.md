@@ -46,7 +46,7 @@ Desenvolver um data warehouse moderno usando o SQL Server para consolidar dados 
 - **Documentação**: Fornecer documentação clara do modelo de dados para dar suporte tanto às partes interessadas do negócio quanto às equipes de análise.
 
 ---
-## Extra 🧠 Análise exploratória dos dados
+## 🧠 Análise exploratória dos dados
 Como extensão do projeto de criação da warehouse, também será desenvolvida uma coleção abrangente de scripts SQL para exploração, análise e geração de relatórios de dados.
 
 ---
