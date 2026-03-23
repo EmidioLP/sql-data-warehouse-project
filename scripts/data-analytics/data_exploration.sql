@@ -150,7 +150,7 @@ ON p.product_key = f.product_key
 GROUP BY p.product_name
 ORDER BY total_revenue DESC
 
--- Mesmo resultado mas utilizando uma função do Windows para maior flexibilidade
+-- Mesmo resultado mas utilizando uma função do Window para maior flexibilidade
 SELECT
 *
 FROM (

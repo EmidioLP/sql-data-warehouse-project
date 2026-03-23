@@ -1,0 +1,84 @@
+/*
+==========================================================================================
+Objetivo:
+	Contém uma magnitude de Scripts que demonstram técnicas de análise de dados mais avançadas
+	como o tempo de transição (trends), análise cumulativa e análise de performance.
+==========================================================================================
+*/
+
+-- Quantos consumidores foram adicionados cada ano
+SELECT
+DATETRUNC(year, create_date) as create_year,
+COUNT(customer_key) as total_customer
+FROM gold.dim_customers
+GROUP BY DATETRUNC(year, create_date)
+ORDER BY DATETRUNC(year, create_date)
+
+-- Cálculo de total de vendas por ano
+-- e o total acumulado de vendas ao longo do tempo
+SELECT
+order_date,
+total_sales,
+SUM(total_sales) OVER (ORDER BY order_date) as running_total_sales
+FROM
+(
+SELECT
+DATETRUNC(year,order_date) as order_date,
+SUM(sales_amount) AS total_sales
+FROM gold.fact_sales
+WHERE order_date IS NOT NULL
+GROUP BY DATETRUNC(year, order_date)
+) t 
+
+/* Análise da performance anual dos produtos comparando suas vendas com tanto o 
+desempenho médio de vendas quanto as vendas de anos anteriores. */
+WITH yearly_product_sales AS(
+SELECT
+YEAR(f.order_date) AS order_year,
+p.product_name,
+SUM(f.sales_amount) as current_sales
+FROM gold.fact_sales f
+LEFT JOIN gold.dim_products p
+ON f.product_key = p.product_key
+WHERE f.order_date IS NOT NULL
+GROUP BY 
+YEAR(f.order_date),
+p.product_name
+)
+SELECT 
+order_year,
+product_name,
+current_sales,
+AVG(current_sales) OVER (PARTITION BY product_name) avg_sales,
+current_sales - AVG(current_sales) OVER (PARTITION BY product_name) AS diff_avg,
+CASE WHEN current_sales - AVG(current_sales) OVER (PARTITION BY product_name) > 0 THEN 'Above Avg'
+	 WHEN current_sales - AVG(current_sales) OVER (PARTITION BY product_name) < 0 THEN 'Below Avg'
+	 ELSE 'Avg'
+END avg_change,
+-- Análise ano a ano
+LAG(current_sales) OVER (PARTITION BY product_name ORDER BY order_year) py_sales,
+current_sales - LAG(current_sales) OVER (PARTITION BY product_name ORDER BY order_year) AS diff_py,
+CASE WHEN current_sales - LAG(current_sales) OVER (PARTITION BY product_name ORDER BY order_year) > 0 THEN 'Increase'
+	 WHEN current_sales - LAG(current_sales) OVER (PARTITION BY product_name ORDER BY order_year) < 0 THEN 'Decrease'
+	 ELSE 'No Change'
+END py_change
+FROM yearly_product_sales
+ORDER BY product_name, order_year
+
+-- Qual categoria contribui mais nas vendas?
+WITH category_sales AS(
+SELECT 
+category,
+SUM(sales_amount) total_sales
+FROM gold.fact_sales f
+LEFT JOIN gold.dim_products p 
+ON p.product_key = f.product_key
+GROUP BY category
+)
+SELECT 
+category,
+total_sales,
+SUM(total_sales) OVER () overall_sales,
+CONCAT(ROUND((CAST(total_sales AS FLOAT) / SUM(total_sales) OVER ()) *100, 2), '%') AS percentage_of_total
+FROM category_sales
+ORDER BY total_sales DESC
