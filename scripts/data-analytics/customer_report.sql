@@ -23,7 +23,7 @@ Destaques:
 CREATE VIEW gold.report_customers AS 
 WITH base_query AS (
 /*-------------------------------------------------------------------------------------
-1) Query Básica: Retorna as principais colunas da tabela
+1) Query Básica: Retorna as principais colunas das tabelas fact_sales e dim_customers
 ---------------------------------------------------------------------------------------*/
 SELECT 
 f.order_number,
@@ -62,6 +62,10 @@ GROUP BY
 	customer_name,
 	age
 )
+
+/*-------------------------------------------------------------------------------------
+3) Query Final: Combina todos os resultados de consumidores em um só resultado
+---------------------------------------------------------------------------------------*/
 SELECT 
 customer_key,
 customer_number,
